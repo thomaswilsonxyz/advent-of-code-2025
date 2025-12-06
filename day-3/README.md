@@ -4,6 +4,10 @@
 
 This problem, broadly, is about finding a sequence of "Batteries" (i.e. single-digit number) in a "Bank" of batteries (i.e.a string of single-digit numbers) that make the largest single number when they are appended together.  e.g. `"1"+"2"="12"`, not `1+2=3`.
 
+### Part ii: Override safety
+
+Now, as opposed to just combining two digits to make the biggest number, we do it with _twelve_
+
 ## Technical Choices
 
 I continued using Ruby and test-driven development with Minitest.

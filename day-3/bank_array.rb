@@ -9,7 +9,7 @@ class BankArray
       .map { |line| Bank.new(line.chomp())  }
   end
 
-  def total_output_joltage 
-    @banks.map(&:largest_possible_joltage).sum()
+  def total_output_joltage(override_safety)
+    @banks.map {|b| b.largest_possible_joltage(override_safety)}.sum()
   end
 end
