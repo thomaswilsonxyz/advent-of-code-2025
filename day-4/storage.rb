@@ -25,12 +25,30 @@ class PaperStorage
     end
   end
 
+  def occupied_spaces 
+    @shelves
+      .map { |shelf| shelf.occupied_spaces }
+      .flatten
+  end
+
+
+  def recursively_remove_all_available_rolls
+    sum = 0
+    while accessible_spaces.size > 0 
+      sum += accessible_spaces.size
+      remove_all_accessible_rolls
+    end
+    sum
+  end
+
   private 
 
-  def all_spaces 
-    spaces = []
-    @shelves.each { |shelf| spaces.append(shelf.occupied_spaces)}
-    @shelves
+  def remove_all_accessible_rolls
+    accessible_spaces.each { |space| remove_roll(the_space) }
+  end
+
+  def remove_roll(the_space)
+    shelf_at(the_space[:shelf_index]).remove_roll(the_space[:index])
   end
 
   def get_space_on_shelf(the_shelf_index, the_space_index)

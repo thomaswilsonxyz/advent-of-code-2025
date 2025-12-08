@@ -25,4 +25,14 @@ class Shelf
   def occupied_spaces
     @spaces.select { |space| space[:is_occupied] }
   end
+
+  def remove_roll(the_space_index)
+    the_space = @spaces.find { |space| the_space_index == space[:index] }
+
+    raise "Space #{the_space_index} on Shelf #{index} does not exist" if the_space.nil?
+
+    raise "Space at #{the_space_index} on shelf #{@index} is not occupied" unless the_space[:is_occupied]
+
+    the_space.merge! the_space, { is_occupied: false }
+  end
 end
