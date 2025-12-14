@@ -33,6 +33,7 @@ class Shelf
 
     raise "Space at #{the_space_index} on shelf #{@index} is not occupied" unless the_space[:is_occupied]
 
+    # ...probably should have made a Space or ShelfSpace class, but in-line hash modifications will do for now
     the_space.merge! the_space, { is_occupied: false }
   end
 end
